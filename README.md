@@ -1,6 +1,6 @@
 # Laravel Custom Authentication Project
 
-This Laravel project demonstrates custom authentication, API integration, and basic CRUD operations. The project allows users to view Kanye West quotes on a web page and through an API route.
+This Laravel project demonstrates custom authentication, API integration. The project allows users to view Kanye West quotes on a web page and through an API route.
 
 ## Table of Contents
 
