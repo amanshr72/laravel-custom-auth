@@ -29,13 +29,13 @@ Make sure you have the following installed:
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/your-username/your-repo.git
+    git clone https://github.com/amanshr72/laravel-custom-auth.git
     ```
 
 2. **Change into the project directory:**
 
     ```bash
-    cd your-repo
+    cd laravel-custom-auth
     ```
 
 3. **Install dependencies:**
@@ -61,7 +61,6 @@ Make sure you have the following installed:
     ```env
     DB_CONNECTION=mysql
     DB_HOST=your-database-host
-    DB_PORT=your-database-port
     DB_DATABASE=your-database-name
     DB_USERNAME=your-database-username
     DB_PASSWORD=your-database-password
