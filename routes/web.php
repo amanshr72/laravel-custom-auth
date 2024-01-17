@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\QuoteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +32,13 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/api/quotes', [QuoteController::class, 'getQuotes'])->name('get-quote');
     Route::get('dashboard', function () { return view('dashboard'); })->name('dashboard');
     Route::get('about', function () { return view('about'); })->name('about');
     Route::get('/logout', [CustomAuthController::class, 'logout'])->name('logout');
 });
+
+if (app()->environment('testing')) {
+    // Exclude middleware for testing only
+    Route::get('/api/quotes', [QuoteController::class, 'getQuotes'])->name('get-quote');
+}
