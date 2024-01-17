@@ -21,12 +21,18 @@
         document.addEventListener('DOMContentLoaded', () => {
             const refreshButton = document.getElementById('refresh-btn');
             const quoteDisplay = document.getElementById('quote-list');
-    
+            const apiToken = "{{ session('apiToken') }}";
+            console.log(apiToken);
             async function fetchQuote() {
                 try {
                     refreshButton.innerText = 'loading...';
-                    const response = await fetch('/api/quotes');
-
+                    // const response = await fetch('/api/quotes');
+                    const response = await fetch('/api/quotes', {
+                        headers: {
+                            'Authorization': apiToken,
+                            'Accept': 'application/json',
+                        },
+                    });
                     if (!response.ok) {
                         throw new Error('Failed to fetch quote');
                     }

@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserCredentialRequest;
 use App\Models\User;
+use App\Models\ApiToken;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CustomAuthController extends Controller
 {
@@ -24,7 +27,17 @@ class CustomAuthController extends Controller
         ]);
         
         if (Auth::attempt($credentials)) {
-            return redirect()->route('dashboard');
+            
+            $apiToken = Str::random(60);
+            
+            Session::put('apiToken', $apiToken);
+            
+            ApiToken::create([
+                'user_id' => auth()->id(),
+                'token' => hash('sha256', $apiToken),
+            ]);
+
+            return view('dashboard', compact('apiToken'));
         }else{
             return back()->with('error', 'Whops, Invalid email and password');
         }
@@ -43,6 +56,6 @@ class CustomAuthController extends Controller
 
     public function logout(){
         Auth::logout();
-        return redirect('/');
+        return redirect('login');
     }
 }
