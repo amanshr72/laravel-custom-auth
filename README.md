@@ -88,7 +88,7 @@ Access the web page by navigating to [http://localhost:8000](http://localhost:80
 
 ### API Route
 
-Retrieve 5 random Kanye West quotes using the API route:
+Retrieve random Kanye West quotes using the API route:
 
 - Endpoint: [http://localhost:8000/api/quotes](http://localhost:8000/api/quotes)
 
