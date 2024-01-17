@@ -33,7 +33,6 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    // Route::get('/api/quotes', [QuoteController::class, 'getQuotes'])->name('get-quote');
     Route::get('dashboard', function () { return view('dashboard'); })->name('dashboard');
     Route::get('about', function () { return view('about'); })->name('about');
     Route::get('/logout', [CustomAuthController::class, 'logout'])->name('logout');
